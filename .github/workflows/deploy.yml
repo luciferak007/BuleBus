@@ -47,3 +47,10 @@ jobs:
           # Optional: Clean up the old extracted folder to force a fresh redeploy
           sudo rm -rf /opt/tomcat/webapps/BusReservationSystem/ 
           sudo /opt/tomcat/bin/startup.sh
+
+    - name: Build WAR with Maven
+      run: |
+        cd BusReservationSystem
+        # The -U flag forces Maven to re-check the internet for missing jars
+        mvn clean package -DskipTests -U 
+
